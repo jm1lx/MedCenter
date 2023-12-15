@@ -1,0 +1,85 @@
+.log-btn{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 20px; /* Ajusta el valor para redondear más o menos las esquinas */
+    color: black;
+    background-color: #A3E4D8;
+    transition: background-color 0.3s, color 0.3s;
+}
+.log-btn:hover {
+    background-color: #85c7b6;
+    color: black;
+  }
+
+.login-icon{
+    height:16px;
+    margin:auto;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px; /* Espaciado derecho para separar otros elementos */
+    text-align: center;
+  }
+
+  .dropdown-icon {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 8px; /* Espaciado entre la imagen y el texto */
+    height:15px;
+  }
+  
+  .dropbtn {
+    background-color: #A3E4D8;
+    color: black;
+    padding: 10px;
+    font-size: 16px;
+    border: solid black 1px;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 160px; /* Ancho del botón */
+    text-align: center; /* Centra el texto dentro del botón */
+    display:flex;
+  }
+  
+  /* Estilos para el contenido del menú desplegable */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    width: 130px; /* Ajusta el ancho según sea necesario */
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius:10px;
+  }
+  
+  /* Estilos para los enlaces dentro del menú desplegable */
+  .dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    width: 100%; /* Hace que los enlaces ocupen todo el ancho del contenedor */
+    background-color: #ddd;
+ 
+  }
+  
+
+  
+  /* Muestra el menú desplegable cuando se pasa el ratón sobre el botón */
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  .cerrarsesion-logo {
+    width: 15px; /* Ajusta el tamaño según sea necesario */
+    height: 15px; /* Ajusta el tamaño según sea necesario */
+    cursor: pointer;
+}

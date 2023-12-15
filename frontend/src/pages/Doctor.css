@@ -1,0 +1,49 @@
+.doctormain-page {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    margin-left: 20px; /* Ajusta el margen izquierdo según tus necesidades */
+    margin-right: 20px; /* Ajusta el margen derecho según tus necesidades */
+    margin-top: 20px;
+  }
+
+  .doctormain-page header {
+    background-color: #A3E4D8;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+
+
+
+  .doctormain-page h2 {
+    color: black;
+  }
+
+  .doctormain-page table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    margin-left: auto; /* Margen a la izquierda */
+    margin-right: auto; /* Margen a la derecha */
+  }
+
+  .doctormain-page th{
+    padding: 0.5rem;
+    border: 1px solid black;
+    text-align: left;
+  }
+
+  .doctormain-page td{
+    padding: 0.5rem;
+    border: 1px solid black;
+    text-align: left;
+  }
+
+  .doctormain-page th {
+    background-color: #A3E4D8;
+    color: black;
+  }

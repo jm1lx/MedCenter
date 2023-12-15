@@ -1,0 +1,72 @@
+/* ClientList.css */
+
+.client-list-container {
+    margin: 50px auto; /* Ajusta según sea necesario */
+    max-width: 600px;
+    margin-top: 150px;
+  }
+  
+  .client-box {
+    background-color: #A3E4D8;
+    border: 1px solid black;
+    border-radius: 20px; /* Añadido para redondear los bordes */
+    padding: 50px;
+    margin-top: 20px; /* Ajusta según sea necesario */
+    
+  }
+  
+  .client-table {
+    width: 100%;
+    margin-top: 50px; /* Ajusta según sea necesario */
+  }
+  
+  .client-table td {
+    padding: 10px;
+    border-bottom: 1px solid black;
+    text-align: left;
+  }
+  
+  .label {
+    font-weight: bold;
+    color: black;
+    width: 150px;
+  }
+  
+  /* Estilo básico para un campo de entrada */
+.editinput {
+  padding: 8px;
+  margin: 0px;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  width: 200px; /* Ajusta el ancho según tus necesidades */
+  border-color: black;
+}
+
+/* Estilo cuando el campo de entrada está enfocado */
+.editinput:focus {
+  border-color: #007bff; /* Cambia el color del borde cuando está enfocado */
+  outline: none; /* Elimina el contorno predeterminado del enfoque */
+}
+
+.edit-btns {
+  padding: 10px 15px;
+  background-color: white;
+  color: black;
+  border: solid black 2px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* Estilo cuando el cursor está sobre el botón */
+.edit-btns:hover {
+  background-color: white; /* Cambia el color de fondo cuando se pasa el cursor sobre el botón */
+}
+
+/* Estilo cuando el botón está deshabilitado */
+.edit-btns:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}

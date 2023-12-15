@@ -1,0 +1,108 @@
+.login {
+    margin: 0 !important;
+    font-family: Arial, sans-serif!important;
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+    height: 100vh!important;
+    background-color: #A3E4D8!important;
+    overflow: hidden!important;
+  }
+  
+  .login-main-container {
+    width: 75%!important; /* Ocupa el 75% del ancho de la pantalla */
+    background-color: white!important; /* Color de fondo */
+    border-radius: 20px!important; /* Bordes redondeados */
+    overflow: hidden!important;
+  }
+
+  .img_home{
+    margin-top: 0px;
+    flex: 1!important;
+    display: flex!important;
+    flex-direction: column!important;
+    justify-content: center!important;
+    align-items: center!important;
+    padding: 50px!important;
+  }
+
+  .img_back{
+    border-radius: 10px;
+    width: 100%;
+  }
+  
+  .login-container {
+    display: flex!important;
+    width: 100%!important;
+    height: 100%!important;
+  }
+  
+  .login-image-section {
+    position: relative!important;
+    flex: 3!important;
+    overflow: hidden!important;
+  }
+  
+  .login-image-section img {
+    width: 100%!important;
+    height: 100%!important;
+    object-fit: cover!important;
+  }
+  
+  .login-overlay {
+    position: absolute!important;
+    top: 0!important;
+    left: 0!important;
+    width: 100%!important;
+    height: 100%!important;
+    background-color: rgba(0, 0, 0, 0.5)!important; /* Añade una superposición */
+  }
+  
+  .login-section {
+    flex: 1!important;
+    display: flex!important;
+    flex-direction: column!important;
+    justify-content: center!important;
+    align-items: center!important;
+    padding: 50px!important;
+  }
+  
+  .login-h2 {
+    margin-bottom: 20px!important;
+    text-align: center!important;
+  }
+
+  .login-input-group {
+    margin-bottom: 15px!important;
+    text-align: left;
+  }
+ 
+  
+  .login-label {
+    display: block!important;
+    margin-bottom: 5px!important;
+  }
+  
+  .login-type-text,
+  .login-type-pass {
+    width: calc(100% - 16px)!important;
+    padding: 8px!important;
+    border-radius: 4px!important;
+    border: 1px solid #ccc!important;
+  }
+  
+  .login-btn {
+    padding: 8px 15px!important;
+    background-color: #A3E4D8!important;
+    color: black!important;
+    border: solid black 2px!important;
+    border-radius: 10px!important;
+    cursor: pointer!important;
+    font-size: 16px!important;
+    width: 100%;
+  }
+  
+  .login-btn:hover {
+    background-color: #85c7b6!important;
+  }
+  

@@ -1,0 +1,87 @@
+.docmain-page {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: white;
+    margin-left: 20px; /* Ajusta el margen izquierdo según tus necesidades */
+    margin-right: 20px; /* Ajusta el margen derecho según tus necesidades */
+    margin-top: 20px;
+  }
+  
+  .docmain-page header {
+    background-color: #A3E4D8;
+    color: black;
+    padding: 5px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  
+  .docmain-page main {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border: solid black 1px;
+    background-color: white;
+  }
+  
+  .docmain-page h2 {
+    color: black;
+  }
+  
+  .docmain-page table {
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    margin-left: auto; /* Margen a la izquierda */
+    margin-right: auto; /* Margen a la derecha */
+  }
+  
+  .docmain-page th {
+    padding: 0.5rem;
+    border: 1px solid black;
+    text-align: left;
+  }
+  
+  .docmain-page td {
+    padding: 0.5rem;
+    border: 1px solid black;
+    text-align: left;
+  }
+  
+  .docmain-page th {
+    background-color: #A3E4D8;
+    color: black;
+  }
+  
+
+  
+  .docmain-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+
+
+ 
+  .consulta-btn{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid black;
+    border-radius: 20px; /* Ajusta el valor para redondear más o menos las esquinas */
+    color: black;
+    background-color: #A3E4D8;
+    transition: background-color 0.3s, color 0.3s;
+    width:300px;
+    height: 50px;
+}
+.consulta-btn:hover {
+    background-color: #85c7b6;
+    color: black;
+  }

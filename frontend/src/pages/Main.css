@@ -1,0 +1,125 @@
+.mainpage-page {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: white;
+}
+
+.mainpage-page header {
+  background-color: #A3E4D8;
+  color: black;
+  padding: 5px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.mainpage-page main {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border:solid black 1px;
+  background-color: #E4E4E4;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.mainpage-page h2 {
+  color: black;
+}
+
+.mainpage-page table {
+  width: 90%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.mainpage-page th{
+  padding: 0.5rem;
+  border: 1px solid black;
+  text-align: left;
+}
+
+.mainpage-page td{
+  padding: 0.5rem;
+  border: 1px solid black;
+  text-align: left;
+}
+
+.mainpage-page th {
+  background-color: #A3E4D8;
+  color: black;
+}
+
+
+.mainpage-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.mainfilters-section {
+  width: 30%;
+}
+
+.mainfilters-section h2 {
+  margin-bottom: 10px;
+}
+
+.mainfilters-section label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.mainfilters-section select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+}
+
+.mainappointments-section {
+  width: 65%;
+}
+
+.mainappointments-section header {
+  margin-bottom: 20px;
+}
+
+.mainappointments-section h1 {
+  font-size: 1.5em;
+}
+
+.mainappointments-section h2 {
+  margin-bottom: 10px;
+}
+
+.mainappointments-section table {
+  width: 90%;
+  border-collapse: collapse;
+  margin-left: 5%;
+}
+
+.mainappointments-section th, .mainappointments-section td {
+  border: 1px solid black;
+  padding: 8px;
+  text-align: left;
+}
+
+.consulta-btn{
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 20px; /* Ajusta el valor para redondear más o menos las esquinas */
+  color: black;
+  background-color: #A3E4D8;
+  transition: background-color 0.3s, color 0.3s;
+  width:300px;
+  height: 50px;
+}
+.consulta-btn:hover {
+  background-color: #85c7b6;
+  color: black;
+}
