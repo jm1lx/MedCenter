@@ -43,4 +43,9 @@ public class CitasServiceImpl implements CitasService {
     public List<Citas> getCitasByDoctorDniAndFecha(String dni, LocalDate fecha) {
         return citasRepository.findByDoctor_DniAndFecha(dni, fecha);
     }
+
+    @Override
+    public void deleteCitaById(int id) {
+        citasRepository.deleteCitaById(id);
+    }
 }

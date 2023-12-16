@@ -1,6 +1,7 @@
 package com.mila.Medical.Center.repository;
 
 import com.mila.Medical.Center.model.Doctor;
+import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 import com.mila.Medical.Center.model.Citas;
@@ -17,4 +18,7 @@ public interface CitasRepository extends JpaRepository<Citas,Long>{
     List<Citas> findByDoctorAndFecha(Doctor doctor, LocalDate fecha);
 
     List<Citas> findByDoctor_DniAndFecha(String dni, LocalDate fecha);
+
+    @Transactional
+    void deleteCitaById(int id);
 }

@@ -3,6 +3,7 @@ package com.mila.Medical.Center.service;
 import com.mila.Medical.Center.model.Citas;
 import com.mila.Medical.Center.model.Client;
 import com.mila.Medical.Center.model.Doctor;
+import jakarta.transaction.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -17,6 +18,8 @@ public interface CitasService {
 
 
     public List<Citas> getCitasByDoctorDniAndFecha(String dni, LocalDate fecha);
+
+    public void deleteCitaById(int id);
 
 
 }

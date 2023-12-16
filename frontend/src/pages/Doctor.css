@@ -34,13 +34,13 @@
   .doctormain-page th{
     padding: 0.5rem;
     border: 1px solid black;
-    text-align: left;
+    text-align: center;
   }
 
   .doctormain-page td{
     padding: 0.5rem;
     border: 1px solid black;
-    text-align: left;
+    text-align: center;
   }
 
   .doctormain-page th {
