@@ -35,13 +35,13 @@
 .mainpage-page th{
   padding: 0.5rem;
   border: 1px solid black;
-  text-align: left;
+  text-align: center;
 }
 
 .mainpage-page td{
   padding: 0.5rem;
   border: 1px solid black;
-  text-align: left;
+  text-align: center;
 }
 
 .mainpage-page th {
@@ -100,7 +100,7 @@
 .mainappointments-section th, .mainappointments-section td {
   border: 1px solid black;
   padding: 8px;
-  text-align: left;
+  text-align: center;
 }
 
 .consulta-btn{
@@ -122,4 +122,19 @@
 .consulta-btn:hover {
   background-color: #85c7b6;
   color: black;
+}
+
+.deletebtn{
+  background-color: red; /* Green */
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border:2px solid black;
+  border-radius: 20px;
 }

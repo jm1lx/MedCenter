@@ -40,13 +40,13 @@
   .informesmain-page th {
     padding: 0.5rem;
     border: 1px solid black;
-    text-align: left;
+    text-align: center;
   }
   
   .informesmain-page td {
     padding: 0.5rem;
     border: 1px solid black;
-    text-align: left;
+    text-align: center;
   }
   
   .informesmain-page th {
@@ -88,7 +88,7 @@
   .appointments-section th, .appointments-section td {
     border: 1px solid black;
     padding: 8px;
-    text-align: left;
+    text-align: center;
   }
  
   .consulta-btn{

@@ -21,6 +21,7 @@ const Main = () => {
     const [citaAgregada, setCitaAgregada] = useState(false);
     // Añade esto junto a tus otros estados
     const [hayHorasDisponibles, setHayHorasDisponibles] = useState(true);
+    
 
 
 
@@ -348,6 +349,35 @@ const Main = () => {
         });
     }
     
+    const deleteCita = async (id) => {
+      try {
+          // Realizar la solicitud DELETE a la API para eliminar la cita por su ID
+          const response = await fetch(`http://localhost:8080/citas/delete/${id}`, {
+              method: 'DELETE',
+          });
+  
+          if (!response.ok) {
+              throw new Error(`Error al eliminar la cita: ${response.statusText}`);
+          }
+  
+          console.log('Cita eliminada correctamente');
+          window.location.reload()
+          // Actualizar el estado o realizar otras acciones si es necesario
+          // Por ejemplo, volver a cargar las citas
+      } catch (error) {
+          console.error('Error al eliminar la cita:', error);
+          // Manejar errores según tu flujo de la aplicación
+      }
+  };
+
+  const confirmDelete = (id) => {
+    const confirmacion = window.confirm('¿Seguro que quieres eliminar esta cita?');
+
+    if (confirmacion) {
+      // Si se confirma, establecer el ID de la cita que se va a eliminar y llamar a la función eliminarCita
+      deleteCita(id);
+    }
+  };
 
   
     return(
@@ -413,6 +443,7 @@ const Main = () => {
                   <th>Doctor</th>
                   <th>Especialidad</th>
                   <th>Aseguradora</th>
+                  <th>Anular</th>
                   {/* Otras columnas de citas */}
                 </tr>
               </thead>
@@ -424,6 +455,10 @@ const Main = () => {
                       <td>{appointment.doctor.name} {appointment.doctor.surname}</td>
                       <td>{appointment.doctor.especialidad.especialidad}</td>
                       <td>{appointment.doctor.aseguradora.aseguradora}</td>
+                      <td>
+                {/* Agrega el botón de eliminación y llama a la función deleteCita con el id de la cita */}
+                <button class="deletebtn" onClick={() => confirmDelete(appointment.id)}><b>Anular Cita</b></button>
+            </td>
                       {/* Otras celdas de citas */}
                     </tr>
                   ))}

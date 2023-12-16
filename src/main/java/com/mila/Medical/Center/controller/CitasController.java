@@ -45,6 +45,19 @@ public class CitasController {
         return citasService.getCitasByDoctor(registrationNumber);
     }
 
+    // En el controlador CitasController
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteCita(@PathVariable("id") int id) {
+        try {
+            citasService.deleteCitaById(id);
+            return new ResponseEntity<>("Cita deleted successfully", HttpStatus.NO_CONTENT);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("Error deleting cita: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
 
 
 
