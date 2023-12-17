@@ -3,7 +3,13 @@ import Appbar from '../components/Appbar.js'
 
 import {useState,useEffect} from 'react';
 import { isAfter,format } from 'date-fns';
-import { utcToZonedTime,zonedTimeToUtc  } from 'date-fns-tz';
+import { utcToZonedTime } from 'date-fns-tz';
+import emailjs from "@emailjs/browser";
+
+
+
+
+
 
 
 const Main = () => {
@@ -21,9 +27,11 @@ const Main = () => {
     const [citaAgregada, setCitaAgregada] = useState(false);
     // Añade esto junto a tus otros estados
     const [hayHorasDisponibles, setHayHorasDisponibles] = useState(true);
+    const [loading, setLoading] = useState(false);
     
 
-
+    
+    useEffect(() => emailjs.init("wNqUAOj5QSgR5kPA5"), []);
 
  
 
@@ -265,12 +273,16 @@ const Main = () => {
     
           if (!response.ok) {
             throw new Error(`Error al agregar la cita: ${response.statusText}`);
+          }else{
+            enviarCorreo(userEmail,clientInfo,doctorInfo,currentDateISO,horaSeleccionada)
+            console.log("enviarCorreo")
           }
 
 
           const data = await response.text();
           console.log('Cita agregada correctamente:', data);
-          window.location.reload();
+          
+          /*window.location.reload();*/
           // Actualizar el estado u realizar otras acciones si es necesario
           setCitaAgregada(true);
         } else {
@@ -283,8 +295,30 @@ const Main = () => {
     }
     
     
-
-
+    const enviarCorreo = async (userEmail,clientInfo,doctorInfo,currentDateISO,horaSeleccionada) => {
+      const serviceId = "service_ydzyz69";
+      const templateId = "template_1a3njoa";
+      try {
+        setLoading(true);
+        await emailjs.send(serviceId, templateId, {
+          to_email: userEmail,
+          name: clientInfo.name,
+          surname: clientInfo.surname,
+          fecha: currentDateISO,
+          hora:horaSeleccionada,
+          docname:doctorInfo.name,
+          docsurname:doctorInfo.surname,
+          docespe:doctorInfo.especialidad.especialidad,
+          docase:doctorInfo.aseguradora.aseguradora,
+        });
+        window.location.reload()
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    
     
 
     useEffect(() => {
@@ -379,8 +413,12 @@ const Main = () => {
     }
   };
 
+
+  
+
   
     return(
+      
       <div>
       <Appbar />
       <div className="mainpage-container">
