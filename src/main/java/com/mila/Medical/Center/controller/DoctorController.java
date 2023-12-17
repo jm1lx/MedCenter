@@ -75,11 +75,13 @@ public class DoctorController {
         // Aquí puedes llamar a tu servicio de doctores para obtener las horas disponibles
         // y también tu servicio de citas para obtener las citas existentes para ese día
 
-        ZonedDateTime currentDateTime = ZonedDateTime.now(ZoneId.of("Europe/Madrid"));
-        LocalDate currentDate = currentDateTime.toLocalDate();
+        LocalDate fechaSeleccionada = LocalDate.parse(fecha);
 
+        // Llama a tu servicio de doctores para obtener las horas disponibles
+        // y también a tu servicio de citas para obtener las citas existentes para ese día
         Doctor doctor = doctorService.getDoctorByDni(dni);
-        List<LocalTime> horasDisponibles = doctorService.getHorasDisponibles(doctor, currentDate);
+        List<LocalTime> horasDisponibles = doctorService.getHorasDisponibles(doctor, fechaSeleccionada);
+
 
         return horasDisponibles;
 

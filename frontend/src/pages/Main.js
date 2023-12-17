@@ -2,7 +2,7 @@ import './Main.css'
 import Appbar from '../components/Appbar.js'
 
 import {useState,useEffect} from 'react';
-import { isAfter,format } from 'date-fns';
+import { addDays,isAfter,format } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
 import emailjs from "@emailjs/browser";
 
@@ -28,6 +28,8 @@ const Main = () => {
     // Añade esto junto a tus otros estados
     const [hayHorasDisponibles, setHayHorasDisponibles] = useState(true);
     const [loading, setLoading] = useState(false);
+    const [fechaSeleccionada,setFechaSeleccionada] = useState('');
+    const [fechas, setFechas] = useState([]);
     
 
     
@@ -61,6 +63,7 @@ const Main = () => {
       var seleccionAseguradoraDiv = document.getElementById('seleccionAseguradora');
       var seleccionDoctorDiv = document.getElementById('seleccionDoctor');
       var seleccionHorasDiv = document.getElementById('seleccionHoras');
+      var seleccionFechaDiv = document.getElementById('seleccionFecha');
     
       // Verifica si los elementos existen antes de intentar establecer innerHTML
       if (seleccionAseguradoraDiv) {
@@ -68,6 +71,9 @@ const Main = () => {
       }
       if (seleccionDoctorDiv) {
         seleccionDoctorDiv.innerHTML = '';
+      }
+      if (seleccionFechaDiv) {
+        seleccionFechaDiv.innerHTML = '';
       }
       if (seleccionHorasDiv) {
         seleccionHorasDiv.innerHTML = '';
@@ -90,11 +96,17 @@ const Main = () => {
     
       selectEspecialidad.addEventListener('change', function () {
         if (this.value) {
+          var seleccionFechaDiv = document.getElementById('seleccionFecha');
+          if (seleccionFechaDiv && seleccionFechaDiv.style.display !== 'none') {
+            seleccionFechaDiv.style.display = 'none';
+          }
           // Oculta el select de doctores si está visible
           var seleccionDoctorDiv = document.getElementById('seleccionDoctor');
           if (seleccionDoctorDiv && seleccionDoctorDiv.style.display !== 'none') {
             seleccionDoctorDiv.style.display = 'none';
           }
+
+
           mostrarAseguradoras(this.value);
           opcionDefault.hidden = true;
         } else {
@@ -117,6 +129,7 @@ const Main = () => {
   console.log("Especialidad: ",especialidadSeleccionada)  
   setAseguradoraSeleccionada('');
   setDoctorSeleccionado('');
+  setFechaSeleccionada('');
   setMostrarHoras(false);
   setCitaAgregada(false);
 
@@ -141,8 +154,13 @@ const Main = () => {
       setDoctorSeleccionado('');
       setMostrarHoras(false);
       setCitaAgregada(false);
+      var seleccionFechaDiv = document.getElementById('seleccionFecha');
+      if (seleccionFechaDiv && seleccionFechaDiv.style.display !== 'block') {
+        seleccionFechaDiv.style.display = 'block';
+      }
       
-      mostrarDoctores(especialidadSeleccionada, this.value);
+      
+      mostrarFechas(especialidadSeleccionada, this.value);
       opcionDefault.hidden = true;
     } else {
       
@@ -155,15 +173,80 @@ const Main = () => {
   seleccionAseguradoraDiv.appendChild(document.createElement('label')).innerText = 'Selecciona Aseguradora:';
   seleccionAseguradoraDiv.appendChild(selectAseguradora);
     }
+    const obtenerFechasSiguientes = () => {
+      const timeZone = 'Europe/Madrid';
+      const currentDateUTC = new Date();
+      const currentDateMadrid = utcToZonedTime(currentDateUTC, timeZone);
+    
+      const fechas = Array.from({ length: 10 }, (_, index) => {
+        const fecha = addDays(currentDateMadrid, index);
+        return format(fecha, 'yyyy-MM-dd');
+      });
+    
+      return fechas;
+    };
+ 
+    function mostrarFechas(especialidadSeleccionada,aseguradoraSeleccionada) {
+      // Limpia los divs de selección
+  // ... (resto del código para limpiar)
+  setFechaSeleccionada('');
+  setDoctorSeleccionado('');
+  setMostrarHoras(false);
+  setCitaAgregada(false);
+
+  var selectFecha = document.createElement('select');
+  selectFecha.id = 'selectFecha';
+
+  var opcionDefault = document.createElement('option');
+  opcionDefault.value = '';
+  opcionDefault.text = 'Selecciona una:';
+  selectFecha.add(opcionDefault);
+  const fechas=obtenerFechasSiguientes();
+
+  fechas.forEach((fecha, index) => {
+    var opcion = document.createElement('option');
+    opcion.value = fecha; // Puedes usar el índice como valor o cambiarlo según tus necesidades
+    opcion.text = fecha;
+    selectFecha.add(opcion);
+  });
+
+  selectFecha.addEventListener('change', function () {
+    if (this.value) {
+      var seleccionDoctorDiv = document.getElementById('seleccionDoctor');
+      if (seleccionDoctorDiv && seleccionDoctorDiv.style.display !== 'none') {
+        seleccionDoctorDiv.style.display = 'none';
+      }
+      setFechaSeleccionada(this.value);
+      setDoctorSeleccionado('');
+      setMostrarHoras(false);
+      setCitaAgregada(false);
+      
+      
+      mostrarDoctores(especialidadSeleccionada, aseguradoraSeleccionada,this.value);
+      opcionDefault.hidden = true;
+    } else {
+      
+      opcionDefault.hidden = false;
+    }
+  });
+
+  var seleccionFechaDiv = document.getElementById('seleccionFecha');
+  seleccionFechaDiv.innerHTML = '';
+  seleccionFechaDiv.appendChild(document.createElement('label')).innerText = 'Selecciona Fecha:';
+  seleccionFechaDiv.appendChild(selectFecha);
+    }
+
+
+
 
     
-    function mostrarDoctores(especialidadSeleccionada, aseguradoraSeleccionada) {
+    function mostrarDoctores(especialidadSeleccionada, aseguradoraSeleccionada,fechaSeleccionada) {
       console.log("Aseguradora: ", aseguradoraSeleccionada);
       var seleccionDoctorDiv = document.getElementById('seleccionDoctor');
       if (seleccionDoctorDiv.style.display !== 'none') {
         seleccionDoctorDiv.style.display = 'none';
       }
-    
+     
       setHorasDisponibles([]);
       setHoraSeleccionada('');
       setCitaAgregada(false);
@@ -207,7 +290,7 @@ const Main = () => {
     
             if (selectedDoctorId) {
               // Fetch available hours for the selected doctor
-              fetchAvailableHours(selectedDoctorId);
+              fetchAvailableHours(selectedDoctorId,fechaSeleccionada);
             } else {
               setMostrarHoras(false);
               setHoraSeleccionada('');
@@ -258,7 +341,7 @@ const Main = () => {
           const nuevaCita = {
             client: { dni: clientInfo.dni },
             doctor: { registrationNumber: doctorInfo.registrationNumber },
-            fecha: currentDateISO,
+            fecha: fechaSeleccionada,
             hora: horaSeleccionada,
           };
     
@@ -274,7 +357,7 @@ const Main = () => {
           if (!response.ok) {
             throw new Error(`Error al agregar la cita: ${response.statusText}`);
           }else{
-            enviarCorreo(userEmail,clientInfo,doctorInfo,currentDateISO,horaSeleccionada)
+            enviarCorreo(userEmail,clientInfo,doctorInfo,currentDateISO,horaSeleccionada,fechaSeleccionada)
             console.log("enviarCorreo")
           }
 
@@ -295,7 +378,7 @@ const Main = () => {
     }
     
     
-    const enviarCorreo = async (userEmail,clientInfo,doctorInfo,currentDateISO,horaSeleccionada) => {
+    const enviarCorreo = async (userEmail,clientInfo,doctorInfo,currentDateISO,horaSeleccionada,fechaSeleccionada) => {
       const serviceId = "service_ydzyz69";
       const templateId = "template_1a3njoa";
       try {
@@ -304,7 +387,7 @@ const Main = () => {
           to_email: userEmail,
           name: clientInfo.name,
           surname: clientInfo.surname,
-          fecha: currentDateISO,
+          fecha: fechaSeleccionada,
           hora:horaSeleccionada,
           docname:doctorInfo.name,
           docsurname:doctorInfo.surname,
@@ -357,23 +440,28 @@ const Main = () => {
 
 
 
-    function fetchAvailableHours(selectedDoctorId) {
-      // Obtener la fecha y hora actual en UTC
+    function fetchAvailableHours(selectedDoctorId, fechaSeleccionada) {
+      
       const currentDateUTC = new Date();
-    
+
       // Convertir la fecha y hora actual a la zona horaria de Madrid
       const timeZone = 'Europe/Madrid';
       const currentDateMadrid = utcToZonedTime(currentDateUTC, timeZone);
     
-      // Formatear la fecha y hora actual para enviarla al servidor
-      const formattedDate = format(currentDateMadrid, 'yyyy-MM-dd');
+      // Formatear la fecha y hora seleccionada para enviarla al servidor
+      const formattedDate = format(new Date(fechaSeleccionada), 'yyyy-MM-dd');
     
       fetch(`http://localhost:8080/doctor/horasDisponibles/${selectedDoctorId}/${formattedDate}`)
         .then(res => res.json())
         .then(horas => {
+          // Obtener la hora actual en Madrid
           const currentHourInMadrid = format(currentDateMadrid, 'HH:mm:ss');
-          const horasPosteriores = horas.filter((hora) => hora > currentHourInMadrid);
-
+    
+          // Filtrar las horas disponibles según la lógica deseada
+          const horasPosteriores = fechaSeleccionada === format(currentDateMadrid, 'yyyy-MM-dd')
+            ? horas.filter((hora) => hora >= currentHourInMadrid)
+            : horas;
+    
           setHorasDisponibles(horasPosteriores);
           setMostrarHoras(horasPosteriores.length > 0);
           setHayHorasDisponibles(horasPosteriores.length > 0);
@@ -429,6 +517,8 @@ const Main = () => {
         <div id="seleccionEspecialidad"></div>
         <br/>
         <div id="seleccionAseguradora"></div>
+        <br/>
+        <div id="seleccionFecha"></div>
         <br/>
         <div id="seleccionDoctor"></div>
         {!hayHorasDisponibles &&(<p><b>NO</b> hay mas horas disponibles.<br/>Vuelva a las <b>00:00</b> para pedir cita.</p>)}
