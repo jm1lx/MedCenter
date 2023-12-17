@@ -333,7 +333,7 @@ const Main = () => {
         const currentDateISO = format(currentDateMadrid, 'yyyy-MM-dd');
     
         // Formatear la fecha y hora seleccionadas para compararlas con la actual
-        const selectedDateTimeFormatted = new Date(`${currentDateISO}T${horaSeleccionada}`);
+        const selectedDateTimeFormatted = utcToZonedTime(new Date(`${fechaSeleccionada}T${horaSeleccionada}`), timeZone);
     
         // Validar que la fecha y hora seleccionadas sean posteriores a la fecha y hora actual
         if (isAfter(selectedDateTimeFormatted, currentDateMadrid)) {
