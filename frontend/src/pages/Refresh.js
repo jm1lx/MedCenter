@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 
 const Refresh = () => {
     useEffect(() => {
-        const userEmail = localStorage.getItem('userEmail');
+
         const dni = localStorage.getItem('dni');
     
         // Realiza el refresh de la página
