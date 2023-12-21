@@ -172,34 +172,34 @@ export default function Client() {
 	      <div>
           <label>DNI:</label>
           <input type="text" value={dni} onChange={(e)=>setDni(e.target.value)} style={{ borderColor: dniError || dniInDbError ? 'red' : '' }}/>
-      		{dniError && <p class="err"style={{ color: 'red' }}>Invalid DNI Format.</p>}{dniInDbError && <p class="err" style={{ color: 'red' }}>DNI Already Exists.</p>}
+      		{dniError && <p class="err"style={{ color: 'red' }}>Formato DNI Erróneo.</p>}{dniInDbError && <p class="err" style={{ color: 'red' }}>Este DNI ya existe.</p>}
       	</div>
         <div>		
-          <label>Name:</label>
+          <label>Nombre:</label>
           <input type="text" value={name} onChange={(e)=>setName(e.target.value)} style={{ borderColor: nameError ? 'red' : '' }}/>
-      		{nameError && <p class="err" style={{ color: 'red' }}>Invalid Name Format.</p>}
+      		{nameError && <p class="err" style={{ color: 'red' }}>Formato Nombre Erróneo.</p>}
       	</div>
         <div>		
-          <label>Surname:</label>
+          <label>Apellido:</label>
           <input type="text" value={surname} onChange={(e)=>setSurname(e.target.value)} style={{ borderColor: surnameError ? 'red' : '' }}/>
-      		{surnameError && <p class="err" style={{ color: 'red' }}>Invalid Surname Format.</p>}
+      		{surnameError && <p class="err" style={{ color: 'red' }}>Formato Apellido Erróneo.</p>}
       	</div>
       	<div>		
-          <label>E-Mail:</label>
+          <label>Correo:</label>
           <input type="mail" value={mail} onChange={(e)=>setMail(e.target.value)} style={{ borderColor: mailError || emailInDbError ? 'red' : '' }}/>
-      		{mailError && <p class="err"style={{ color: 'red' }}>Invalid Mail Format.</p>}{emailInDbError && <p class="err"style={{ color: 'red' }}>E-Mail Already Exists.</p>}
+      		{mailError && <p class="err"style={{ color: 'red' }}>Formato Correo Erróneo.</p>}{emailInDbError && <p class="err"style={{ color: 'red' }}>Este Correo ya existe.</p>}
       	</div>
         <div>		
-          <label>Password:</label>
+          <label>Contraseña:</label>
           <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} style={{ borderColor: passwordError ? 'red' : '' }}/>
-      		{passwordError && <p class="err" style={{ color: 'red' }}>Invalid Password Format.8 to 24 Char. No special Char.</p>}
+      		{passwordError && <p class="err" style={{ color: 'red' }}>Formato Erróneo. 8-24 Caracteres. No especiales.</p>}
       	</div>
         <div>		
-          <label>Confirm Password:</label>
+          <label>Confirma Contraseña:</label>
           <input type="password" value={confirmPassword} onChange={(e)=>setConfirmPassword(e.target.value)}/>
-      		{passwordMatchError && (<p class="err" style={{color :'red'}}>Passwords do not match.</p>)}
+      		{passwordMatchError && (<p class="err" style={{color :'red'}}>Contraseñas no coinciden.</p>)}
 	      </div>
-	      <button type="button" class="btn" onClick={handleClick} >Submit</button>
+	      <button type="button" class="btn" onClick={handleClick} >Enviar</button>
       </form>	
     </div>
     </body>

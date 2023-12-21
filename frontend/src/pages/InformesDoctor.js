@@ -96,7 +96,7 @@ const InformesDoctor = () => {
                 <tr>
                   <th>Fecha</th>
                   <th>Hora</th>
-                  <th>Doctor</th>
+                  <th>Paciente</th>
                   <th>Especialidad</th>
                   <th>Aseguradora</th>
                   <th>Estado de la Cita</th>
@@ -109,7 +109,7 @@ const InformesDoctor = () => {
                     <tr key={appointment.id}>
                       <td>{appointment.fecha}</td>
                       <td>{appointment.hora}</td>
-                      <td>{appointment.doctor.name} {appointment.doctor.surname}</td>
+                      <td>{appointment.client.name} {appointment.client.surname}</td>
                       <td>{appointment.doctor.especialidad.especialidad}</td>
                       <td>{appointment.doctor.aseguradora.aseguradora}</td>
                       <td>{renderizarEstadoCita(appointment)}</td>

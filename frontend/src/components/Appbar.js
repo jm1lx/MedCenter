@@ -62,7 +62,7 @@ export default function Appbar() {
           </div>
           ):(
             // Si no hay un token, mostrar el botón de inicio de sesión
-            <button class="log-btn" classname="but1" color="inherit" onClick={()=>navigate("/login")}><img src={person} class="login-icon"alt="icon" /> Log In</button>
+            <button class="log-btn" classname="but1" color="inherit" onClick={()=>navigate("/login")}><img src={person} class="login-icon"alt="icon" /> Iniciar Sesión</button>
           )}
         </Toolbar>
       </AppBar>

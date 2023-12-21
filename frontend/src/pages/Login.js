@@ -89,25 +89,25 @@ const Login = () => {
                 
               <div class="login-section">
                 <div>
-                  {cameFromRegister && <p>You have successfully registred.</p>}
+                  {cameFromRegister && <p>Te has registrado correctamente.</p>}
                 </div>
-                <h2 class="login-h2">Log In</h2>
+                <h2 class="login-h2">Inicio Sesión</h2>
                 <form>
                   <div class="login-input-group">
-                    <label class="login-label"for="mail">E-Mail:</label>
+                    <label class="login-label"for="mail">Correo:</label>
                     <input class="login-type-text" type="mail" value={mail} onChange={(e)=>setMail(e.target.value)} style={{ borderColor: mailNotCorrect ? 'red' : '' }}/>
                   </div>
                   <div class="login-input-group">
-                    <label class="login-label"for="password">Password:</label>
+                    <label class="login-label"for="password">Contraseña:</label>
                     <input class="login-type-pass" type="password" value={password} onChange={(e)=>setPassword(e.target.value)} style={{ borderColor: pwdNotCorrect ? 'red' : '' }} />
                     {notCorrect && <p class="err"style={{ color: 'red' }}>Los datos introducidos no coinciden.</p>}
                   </div>
         
                   <div class="login-input-group">
-                    <button class="login-btn" type="btn" onClick={handleClick}>Log In</button>
+                    <button class="login-btn" type="btn" onClick={handleClick}>Acceder</button>
                   </div><br/>
                   <div class="login-reg">
-                  <label>Don't have an account? </label><a href="/register">Register</a><br/>
+                  <label>Aún no tienes cuenta? </label><a href="/register">Registro</a><br/>
                   </div><br/>
                 </form>
               </div>

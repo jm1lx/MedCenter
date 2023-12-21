@@ -83,20 +83,20 @@ const LoginDoctor = () => {
                   <a href="/home"><img class="img_back" src={logo} alt="Logo"/></a>
                 
               <div class="login-section">
-                <h2 class="login-h2">Log In Doctor</h2>
+                <h2 class="login-h2">Inicio Sesión Doctor</h2>
                 <form>
                   <div class="login-input-group">
                     <label class="login-label"for="mail">Numero de Registro:</label>
                     <input class="login-type-text" type="mail" value={registrationNumber} onChange={(e)=>setRegistrationNumber(e.target.value)} style={{ borderColor: registrationNumberNotCorrect ? 'red' : '' }}/>
                   </div>
                   <div class="login-input-group">
-                    <label class="login-label"for="mail">Dni:</label>
+                    <label class="login-label"for="mail">DNI:</label>
                     <input class="login-type-pass" type="mail" value={dni} onChange={(e)=>setDni(e.target.value)} style={{ borderColor: dniNotCorrect ? 'red' : '' }} />
                     {notCorrect && <p class="err"style={{ color: 'red' }}>Los datos introducidos no coinciden.</p>}
                   </div>
         
                   <div class="login-input-group">
-                    <button class="login-btn" type="btn" onClick={handleClick}>Log In</button>
+                    <button class="login-btn" type="btn" onClick={handleClick}>Acceder</button>
                   </div><br/>
                 </form>
               </div>

@@ -116,6 +116,7 @@ const Main = () => {
 
   // Verifica si el elemento existe antes de intentar establecer innerHTML
   if (seleccionEspecialidadDiv) {
+    selectEspecialidad.classList.add('mi-select-clase');
     // Mostrar la selección de especialidad
     seleccionEspecialidadDiv.innerHTML = '';
     seleccionEspecialidadDiv.appendChild(document.createElement('label')).innerText = 'Selecciona Especialidad:';

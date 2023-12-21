@@ -112,7 +112,7 @@ function Home(){
         <footer>
         <div class="footer-container">
             <div class="about-me">
-                <h3>About Us</h3>
+                <h3>Sobre Nosotros</h3>
                 <p>Descubre la excelencia en nuestro centro médico, donde profesionales altamente capacitados se dedican a tu bienestar. 
                     Equipados con tecnología de vanguardia, ofrecemos diagnósticos precisos y tratamientos efectivos. 
                     Nuestra atención es personalizada, centrada en tus necesidades individuales, en un ambiente acogedor que prioriza tu tranquilidad. 
@@ -124,7 +124,7 @@ function Home(){
             </div>
 
             <div class="contact-us">
-                <h3>Contact Us</h3>
+                <h3>Contáctanos</h3>
                 <p>¡Estamos aquí para ayudarte! Contáctanos:</p>
                 <ul>
                     <li>Email: medcenter@uoc.edu</li>
@@ -135,7 +135,7 @@ function Home(){
                         </>
                     ) : (
                     <>
-                    <li><a href="#" onClick={handleClick}>Accés Doctors</a></li>
+                    <li><a href="#" onClick={handleClick}>Acceso Doctores</a></li>
                     </>
                     )}
                 </ul>
