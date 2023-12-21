@@ -136,5 +136,10 @@
   margin: 4px 2px;
   cursor: pointer;
   border:2px solid black;
-  border-radius: 20px;
+  border-radius: 15px;
 }
+
+.deletebtn:hover {
+  background-color: rgba(200, 0, 0); /* Green */
+}
+
