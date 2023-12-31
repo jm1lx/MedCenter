@@ -61,6 +61,7 @@ const Doctor = () => {
                     <th>Hora</th>
                     <th>Paciente</th>
                     <th>DNI</th>
+                    <th>Motivo de la Consulta</th>
                     {/* Otras columnas de citas */}
                   </tr>
                 </thead>
@@ -71,6 +72,7 @@ const Doctor = () => {
                       <td>{appointment.hora}</td>
                       <td>{appointment.client.name} {appointment.client.surname}</td>
                       <td>{appointment.client.dni}</td>
+                      <td><textarea class="input-motivo" disabled>{appointment.motivo}</textarea></td>
                       {/* Otras celdas de citas */}
                     </tr>
                   ))}

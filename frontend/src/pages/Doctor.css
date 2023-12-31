@@ -47,3 +47,16 @@
     background-color: #A3E4D8;
     color: black;
   }
+
+  
+.input-motivo{
+  padding: 5px;
+  width:400px;
+  height:100px;
+  resize:none;
+  color:black;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-left:10px;
+}

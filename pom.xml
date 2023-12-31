@@ -56,6 +56,11 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-crypto</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>com.github.javafaker</groupId>
+			<artifactId>javafaker</artifactId>
+			<version>1.0.2</version> <!-- La versión puede cambiar, verifica la última versión en el repositorio Maven -->
+		</dependency>
 
 
 	</dependencies>

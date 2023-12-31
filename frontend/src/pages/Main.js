@@ -30,6 +30,8 @@ const Main = () => {
     const [loading, setLoading] = useState(false);
     const [fechaSeleccionada,setFechaSeleccionada] = useState('');
     const [fechas, setFechas] = useState([]);
+    const [motivoConsulta, setMotivoConsulta] = useState('');
+
     
 
     
@@ -116,7 +118,7 @@ const Main = () => {
 
   // Verifica si el elemento existe antes de intentar establecer innerHTML
   if (seleccionEspecialidadDiv) {
-    selectEspecialidad.classList.add('mi-select-clase');
+    seleccionEspecialidadDiv.classList.add("desplegable");
     // Mostrar la selección de especialidad
     seleccionEspecialidadDiv.innerHTML = '';
     seleccionEspecialidadDiv.appendChild(document.createElement('label')).innerText = 'Selecciona Especialidad:';
@@ -155,6 +157,11 @@ const Main = () => {
       setDoctorSeleccionado('');
       setMostrarHoras(false);
       setCitaAgregada(false);
+                // Oculta el select de doctores si está visible
+                var seleccionDoctorDiv = document.getElementById('seleccionDoctor');
+                if (seleccionDoctorDiv && seleccionDoctorDiv.style.display !== 'none') {
+                  seleccionDoctorDiv.style.display = 'none';
+                }
       var seleccionFechaDiv = document.getElementById('seleccionFecha');
       if (seleccionFechaDiv && seleccionFechaDiv.style.display !== 'block') {
         seleccionFechaDiv.style.display = 'block';
@@ -170,6 +177,7 @@ const Main = () => {
   });
 
   var seleccionAseguradoraDiv = document.getElementById('seleccionAseguradora');
+  seleccionAseguradoraDiv.classList.add("desplegable");
   seleccionAseguradoraDiv.innerHTML = '';
   seleccionAseguradoraDiv.appendChild(document.createElement('label')).innerText = 'Selecciona Aseguradora:';
   seleccionAseguradoraDiv.appendChild(selectAseguradora);
@@ -232,6 +240,7 @@ const Main = () => {
   });
 
   var seleccionFechaDiv = document.getElementById('seleccionFecha');
+  seleccionFechaDiv.classList.add("desplegable");
   seleccionFechaDiv.innerHTML = '';
   seleccionFechaDiv.appendChild(document.createElement('label')).innerText = 'Selecciona Fecha:';
   seleccionFechaDiv.appendChild(selectFecha);
@@ -278,6 +287,8 @@ const Main = () => {
           if (seleccionDoctorDiv) {
             seleccionDoctorDiv.style.display = 'block';
             seleccionDoctorDiv.innerHTML = '';
+            seleccionDoctorDiv.classList.add("desplegable");
+            
             seleccionDoctorDiv.appendChild(document.createElement('label')).innerText = 'Selecciona Doctor:';
             seleccionDoctorDiv.appendChild(selectDoctor);
             opcionDefault.hidden = true;
@@ -344,6 +355,7 @@ const Main = () => {
             doctor: { registrationNumber: doctorInfo.registrationNumber },
             fecha: fechaSeleccionada,
             hora: horaSeleccionada,
+            motivo:motivoConsulta,
           };
     
           // Realizar la solicitud POST a la API
@@ -526,7 +538,7 @@ const Main = () => {
         {mostrarHoras && (
             <>
               <br />
-              <div id="seleccionHoras">
+              <div id="seleccionHoras" class="desplegable">
                 <label>Selecciona una hora:</label>
                 <select
                   value={horaSeleccionada}
@@ -541,14 +553,27 @@ const Main = () => {
                     </option>
                   ))}
                 </select>
+                <br/>
+                <br />
                 {horaSeleccionada && (
   <>
-    <br/>
-    <button className="consulta-btn" onClick={agregarCita} disabled={citaAgregada}>
-      Añadir Cita
-    </button>
+      <label>Motivo de la consulta:</label>
+      <textarea
+        value={motivoConsulta}
+        onChange={(e) => setMotivoConsulta(e.target.value)}
+        rows={4}
+        class="text-motivo"
+      />
+      <br />
   </>
 )}
+      {motivoConsulta.trim() !== '' && (
+        <>
+          <button className="consulta-btn" onClick={agregarCita} disabled={citaAgregada}>
+            Añadir Cita
+          </button>
+        </>
+      )}
                
               </div>
             </>
@@ -560,6 +585,8 @@ const Main = () => {
         {/* Sección derecha para ver citas */}
         <div className="mainappointments-section">
           <main class="mainpage-page">
+            <br/>
+            <br/>
             <h1>Citas Programadas: {userData && userData.name} {userData && userData.surname} {userData && userData.dni}</h1>
             {appointments.length === 0 ? (
               <p>No tienes citas programadas.</p>
@@ -572,6 +599,7 @@ const Main = () => {
                   <th>Doctor</th>
                   <th>Especialidad</th>
                   <th>Aseguradora</th>
+                  <th>Motivo de la consulta</th>
                   <th>Anular</th>
                   {/* Otras columnas de citas */}
                 </tr>
@@ -584,6 +612,7 @@ const Main = () => {
                       <td>{appointment.doctor.name} {appointment.doctor.surname}</td>
                       <td>{appointment.doctor.especialidad.especialidad}</td>
                       <td>{appointment.doctor.aseguradora.aseguradora}</td>
+                      <td><textarea class="input-motivo" disabled>{appointment.motivo}</textarea></td>
                       <td>
                 {/* Agrega el botón de eliminación y llama a la función deleteCita con el id de la cita */}
                 <button class="deletebtn" onClick={() => confirmDelete(appointment.id)}><b>Anular Cita</b></button>

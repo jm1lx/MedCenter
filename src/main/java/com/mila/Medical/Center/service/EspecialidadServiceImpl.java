@@ -20,4 +20,9 @@ public class EspecialidadServiceImpl implements EspecialidadService{
     @Override
     public List<Especialidad> getAllEspecialidades() { return especialidadRepository.findAll();}
 
+    @Override
+    public Especialidad getEspecialidadById(int id) {
+        return especialidadRepository.findEspecialidadById(id);
+    }
+
 }

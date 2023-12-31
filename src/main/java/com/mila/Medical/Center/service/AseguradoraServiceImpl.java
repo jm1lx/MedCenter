@@ -2,6 +2,7 @@ package com.mila.Medical.Center.service;
 
 import com.mila.Medical.Center.model.Aseguradora;
 import com.mila.Medical.Center.model.Client;
+import com.mila.Medical.Center.model.Especialidad;
 import com.mila.Medical.Center.repository.AseguradoraRepository;
 import com.mila.Medical.Center.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,4 +26,11 @@ public class AseguradoraServiceImpl implements AseguradoraService{
     public List<Aseguradora> getAllAseguradoras() {
         return aseguradoraRepository.findAll();
     }
+
+    @Override
+    public Aseguradora getAseguradoraById(int id) {
+        return aseguradoraRepository.findAseguradoraById(id);
+    }
+
+
 }

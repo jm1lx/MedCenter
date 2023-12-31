@@ -143,3 +143,30 @@
   background-color: rgba(200, 0, 0); /* Green */
 }
 
+.desplegable{
+  color:black;
+  width:1150px;
+  align-items: center;
+  justify-content: center;
+  text-align: left;
+  margin-left: 140px;
+}
+
+.text-motivo{
+  resize: none;
+  width:280px;
+  font-size: 16px;
+}
+
+.input-motivo{
+  padding:5px;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  height: 100px;
+  width:300px !important;
+  resize: none;
+  margin-left:10px;
+  white-space: pre-line;
+}

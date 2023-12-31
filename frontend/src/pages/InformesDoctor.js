@@ -9,6 +9,11 @@ const InformesDoctor = () => {
     const dni = localStorage.getItem('dni');
     const [doctorData, setDoctorData] = useState(null);
     const [appointments, setAppointments] = useState([]);
+    const [informeInput, setInformeInput] = useState('');
+    const [editMode, setEditMode] = useState(false); 
+    const [editModeMap, setEditModeMap] = useState({}); // Para rastrear el modo de edición por cita
+  const [informeInputMap, setInformeInputMap] = useState({}); // Para rastrear el informe por cita
+
 
   
 
@@ -66,22 +71,106 @@ const InformesDoctor = () => {
     function renderizarEstadoCita(cita) {
         const fechaHoraCita = new Date(`${cita.fecha}T${cita.hora}`);
         const fechaHoraActual = new Date();
+
+        return (
+          <td>
+            {isAfter(fechaHoraActual, fechaHoraCita) ? (
+              <span style={{ color: 'green' }}>✅ Realizada</span>
+            ) : (
+              <span style={{ color: 'orange' }}>🕛 Pendiente</span>
+              
+            )}
+          </td>
+        );
+      };
+    
+      function renderizarInformeVisita(cita) {
+        const id = cita.id;
       
-        // Verificar si la cita es anterior a la fecha actual
-        if (isAfter(fechaHoraActual, fechaHoraCita)) {
-          return <span style={{ color: 'green' }}>✅ Realizada</span>; // Mostrar tick verde
-        }
-      
-        // Verificar si la hora de la cita es posterior a la hora actual
-        if (isAfter(fechaHoraCita, fechaHoraActual)) {
-          return <span style={{ color: 'orange' }}>🕛 Pendiente</span>; // Mostrar tick rojo
-        }
-      
-        return null; // En otros casos, no mostrar ningún tick
+    
+        return (
+          <td key={id}>
+            {isAfter(new Date(), new Date(`${cita.fecha}T${cita.hora}`)) ? (
+              <>
+                {editModeMap[id] ? (
+                  <>
+                    <textarea
+                      type="text"
+                      value={informeInputMap[id] || ''}
+                      onChange={(e) => handleInformeInputChange(e, id)}
+                      placeholder="Introduzca mensaje visita"
+                      className="input-informe"
+                    /><br/>
+                    <button className="btn-informedoc" onClick={() => handleInformeSubmit(id)}>
+                      Guardar Informe
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    {cita.informe ? (
+                      <>
+                        <textarea class="input-informe" disabled>{cita.informe.replace(/\\n/g, '\n').replace(/"/g, '')}</textarea><br/>
+                        <button className="btn-informedoc" onClick={() => handleEditButtonClick(id)}>
+                          Editar Informe
+                        </button>
+                      </>
+                    ) : (
+                      <button className="btn-informedoc" onClick={() => handleEditButtonClick(id)}>
+                        Agregar Informe
+                      </button>
+                    )}
+                  </>
+                )}
+              </>
+            ) : (
+              <span>La visita aún no se ha realizado.</span>
+            )}
+          </td>
+        );
       }
-   
- 
-  
+    
+      const handleInformeInputChange = (e, id) => {
+        // Actualizar el valor del informe para la cita específica
+        setInformeInputMap((prevMap) => ({
+          ...prevMap,
+          [id]: e.target.value,
+        }));
+      };
+    
+      const handleInformeSubmit = (id) => {
+        // Enviar el informe al servidor y actualizar el estado local
+        fetch(`http://localhost:8080/citas/update-informe/${id}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(informeInputMap[id]),
+        })
+          .then((response) => {
+            if (response.ok) {
+              console.log('Informe enviado exitosamente');
+              setEditModeMap((prevMap) => ({
+                ...prevMap,
+                [id]: false, // Salir del modo de edición al guardar el informe
+              }));
+              window.location.reload()
+              // Puedes querer actualizar el estado local aquí también
+            } else {
+              console.error('Error al enviar el informe');
+            }
+          })
+          .catch((error) => {
+            console.error('Error de red:', error);
+          });
+      };
+    
+      const handleEditButtonClick = (id) => {
+        // Activar el modo de edición para la cita específica
+        setEditModeMap((prevMap) => ({
+          ...prevMap,
+          [id]: true,
+        }));
+      };
     return(
       <div>
       <Appbar />
@@ -112,8 +201,8 @@ const InformesDoctor = () => {
                       <td>{appointment.client.name} {appointment.client.surname}</td>
                       <td>{appointment.doctor.especialidad.especialidad}</td>
                       <td>{appointment.doctor.aseguradora.aseguradora}</td>
-                      <td>{renderizarEstadoCita(appointment)}</td>
-                      <td>"Archivo"</td>
+                      {renderizarEstadoCita(appointment)}
+                      {renderizarInformeVisita(appointment)}
                       {/* Otras celdas de citas */}
                     </tr>
                   ))}

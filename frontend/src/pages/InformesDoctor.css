@@ -85,3 +85,30 @@
     background-color: #85c7b6;
     color: black;
   }
+
+.input-informe{
+  padding:5px;
+  font-size: 16px;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: black;
+  height: 100px;
+  width:300px;
+  resize: none;
+  margin-left:10px;
+  white-space: pre-line;
+}
+
+.btn-informedoc{
+  padding: 5px;
+  font-size: 14px;
+  color:black;
+  border: 1px solid black !important;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color:  #a3e4d877 !important;
+  color: #333;
+  width:150px;
+}
+
+
