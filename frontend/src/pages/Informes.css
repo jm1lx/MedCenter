@@ -111,3 +111,18 @@
     background-color: #85c7b6;
     color: black;
   }
+
+  .btn-informe{
+    padding: 10px;
+    font-size: 16px;
+    color:black !important;
+    border: 1px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color:  #a3e4d877 !important;
+    width: 175px;
+    height:80px;
+  }
+  .btn-informe:hover{
+    background-color:  #44ad9877 !important;
+  }

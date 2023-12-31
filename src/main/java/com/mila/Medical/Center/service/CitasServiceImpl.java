@@ -48,4 +48,10 @@ public class CitasServiceImpl implements CitasService {
     public void deleteCitaById(int id) {
         citasRepository.deleteCitaById(id);
     }
+
+    @Override
+    @Transactional
+    public void updateInforme(int id, String informe) {
+        citasRepository.updateInforme(id, informe);
+    }
 }

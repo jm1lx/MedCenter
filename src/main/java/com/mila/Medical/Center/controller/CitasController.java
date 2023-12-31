@@ -57,6 +57,16 @@ public class CitasController {
         }
     }
 
+    @PostMapping("/update-informe/{id}")
+    public ResponseEntity<String> updateInforme(@PathVariable("id") int id, @RequestBody String informe) {
+        try {
+            citasService.updateInforme(id, informe);
+            return new ResponseEntity<>("Informe updated successfully", HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ResponseEntity<>("Error updating informe: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 
 
 

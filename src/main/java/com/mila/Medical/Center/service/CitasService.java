@@ -21,5 +21,5 @@ public interface CitasService {
 
     public void deleteCitaById(int id);
 
-
+    public void updateInforme(int id, String informe);
 }

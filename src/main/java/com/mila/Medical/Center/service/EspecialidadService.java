@@ -9,4 +9,6 @@ import java.util.List;
 public interface EspecialidadService {
     public Especialidad saveEspecialidad(Especialidad especialidad);
     public List<Especialidad> getAllEspecialidades();
+
+    public Especialidad getEspecialidadById(int id);
 }

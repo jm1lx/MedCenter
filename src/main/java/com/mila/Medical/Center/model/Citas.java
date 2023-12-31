@@ -31,6 +31,11 @@ public class Citas {
 
     private LocalTime hora;
 
+
+    private String informe;
+
+    private String motivo;
+
     public Citas() {
     }
 
@@ -72,5 +77,21 @@ public class Citas {
 
     public void setHora(LocalTime hora) {
         this.hora = hora;
+    }
+
+    public String getInforme() {
+        return informe;
+    }
+
+    public void setInforme(String informe) {
+        this.informe = informe;
+    }
+
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
     }
 }
