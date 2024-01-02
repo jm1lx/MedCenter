@@ -2,6 +2,7 @@ import './InformesDoctor.css'
 import Appbar from '../components/Appbar.js'
 import {useState,useEffect} from 'react';
 import { isAfter} from 'date-fns';
+import emailjs from "@emailjs/browser";
 
 
 
@@ -15,7 +16,7 @@ const InformesDoctor = () => {
   const [informeInputMap, setInformeInputMap] = useState({}); // Para rastrear el informe por cita
 
 
-  
+  useEffect(() => emailjs.init("wNqUAOj5QSgR5kPA5"), []);
 
 
     useEffect(() => {
@@ -153,7 +154,8 @@ const InformesDoctor = () => {
                 ...prevMap,
                 [id]: false, // Salir del modo de edición al guardar el informe
               }));
-              window.location.reload()
+              enviarCorreoInforme(id)
+              //window.location.reload()
               // Puedes querer actualizar el estado local aquí también
             } else {
               console.error('Error al enviar el informe');
@@ -162,6 +164,30 @@ const InformesDoctor = () => {
           .catch((error) => {
             console.error('Error de red:', error);
           });
+      };
+
+      const enviarCorreoInforme = async (id) => {
+        const serviceId = "service_ydzyz69";
+        const templateId = "template_5to04ka";
+        try {
+          const appointment = appointments.find(app => app.id === id);
+
+          // Verificar si se encontró el appointment
+          if (!appointment) {
+            console.error(`No se encontró ninguna cita con el id: ${id}`);
+            return;
+          }
+
+          await emailjs.send(serviceId, templateId, {
+            to_email: appointment.client.mail,
+            name:appointment.client.name,
+            surname:appointment.client.surname,
+            identifier:appointment.id,
+          });
+          window.location.reload()
+        } catch (error) {
+          console.log(error);
+        } 
       };
     
       const handleEditButtonClick = (id) => {
@@ -183,6 +209,7 @@ const InformesDoctor = () => {
             <table>
               <thead>
                 <tr>
+                <th>ID</th>
                   <th>Fecha</th>
                   <th>Hora</th>
                   <th>Paciente</th>
@@ -196,6 +223,7 @@ const InformesDoctor = () => {
               <tbody>
                   {appointments.map((appointment) => (
                     <tr key={appointment.id}>
+                      <td>{appointment.id}</td>
                       <td>{appointment.fecha}</td>
                       <td>{appointment.hora}</td>
                       <td>{appointment.client.name} {appointment.client.surname}</td>

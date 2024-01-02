@@ -187,7 +187,7 @@ const Main = () => {
       const currentDateUTC = new Date();
       const currentDateMadrid = utcToZonedTime(currentDateUTC, timeZone);
     
-      const fechas = Array.from({ length: 10 }, (_, index) => {
+      const fechas = Array.from({ length: 20 }, (_, index) => {
         const fecha = addDays(currentDateMadrid, index);
         return format(fecha, 'yyyy-MM-dd');
       });
@@ -534,7 +534,7 @@ const Main = () => {
         <div id="seleccionFecha"></div>
         <br/>
         <div id="seleccionDoctor"></div>
-        {!hayHorasDisponibles &&(<p><b>NO</b> hay mas horas disponibles.<br/>Vuelva a las <b>00:00</b> para pedir cita.</p>)}
+        {!hayHorasDisponibles &&(<p><b>NO</b> hay mas horas disponibles.</p>)}
         {mostrarHoras && (
             <>
               <br />
@@ -594,6 +594,7 @@ const Main = () => {
             <table>
               <thead>
                 <tr>
+                  <th>ID</th>
                   <th>Fecha</th>
                   <th>Hora</th>
                   <th>Doctor</th>
@@ -607,6 +608,7 @@ const Main = () => {
               <tbody>
                   {appointments.map((appointment) => (
                     <tr key={appointment.id}>
+                      <td>{appointment.id}</td>
                       <td>{appointment.fecha}</td>
                       <td>{appointment.hora}</td>
                       <td>{appointment.doctor.name} {appointment.doctor.surname}</td>
