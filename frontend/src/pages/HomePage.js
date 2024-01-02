@@ -140,7 +140,7 @@ function Home(){
                     )}
                 </ul>
                 
-                <a href="mailto:medcenter@uoc.edu">
+                <a href="mailto:medcentertfg@gmail.com">
                     <img src={gmail} alt="Gmail" class="gmail-logo"/>
                 </a>
                 

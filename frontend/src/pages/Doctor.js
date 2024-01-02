@@ -57,6 +57,7 @@ const Doctor = () => {
               <table>
                 <thead>
                   <tr>
+                    <th>ID</th>
                     <th>Fecha</th>
                     <th>Hora</th>
                     <th>Paciente</th>
@@ -68,6 +69,7 @@ const Doctor = () => {
                 <tbody>
                   {appointments.map((appointment) => (
                     <tr key={appointment.id}>
+                      <td>{appointment.id}</td>
                       <td>{appointment.fecha}</td>
                       <td>{appointment.hora}</td>
                       <td>{appointment.client.name} {appointment.client.surname}</td>

@@ -158,6 +158,7 @@ const Informes = () => {
             <table>
               <thead>
                 <tr>
+                  <th>ID</th>
                   <th>Fecha</th>
                   <th>Hora</th>
                   <th>Doctor</th>
@@ -172,6 +173,7 @@ const Informes = () => {
               <tbody>
                   {appointments.map((appointment) => (
                     <tr key={appointment.id}>
+                      <td>{appointment.id}</td>
                       <td>{appointment.fecha}</td>
                       <td>{appointment.hora}</td>
                       <td>{appointment.doctor.name} {appointment.doctor.surname}</td>
