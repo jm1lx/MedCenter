@@ -1,3 +1,13 @@
+## What is MedCenter?
+
+Final degree project of an internal system for a medical center that enables patients to book appointments online. Additionally, I integrated email notification reception into the system. Furthermore, I implemented a feature allowing patients to download medical reports added by doctors prior to the visits among other implemented features.
+
+Developed using emerging programming languages such as React and Spring Boot, previously unfamiliar to me, this project has not only served for personal growth but also to emphasize the use of actual languages.
+
+𝗕𝗮𝗰𝗸𝗲𝗻𝗱: Java SpringBoot
+𝗙𝗿𝗼𝗻𝘁𝗲𝗻𝗱: React, JavaScript, HTML, CSS
+𝗗𝗮𝘁𝗮𝗕𝗮𝘀𝗲: MySQL
+𝗩𝗲𝗿𝘀𝗶𝗼𝗻 𝗖𝗼𝗻𝘁𝗿𝗼𝗹: GIT
 
 ## Aplicacions necessaries per executar el projecte
 
